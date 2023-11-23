@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
       },
       resolve: {
         alias: {
-          '~': resolve(__dirname, 'src', 'myPackagePlugin'),
+          '~': resolve(__dirname, 'src', 'myComponentLibrary'),
         },
       },
       build: {
@@ -31,12 +31,12 @@ export default defineConfig(({ mode }) => {
       },
       resolve: {
         alias: {
-          '~': resolve(__dirname, 'src', 'myPackagePlugin'),
+          '~': resolve(__dirname, 'src', 'myComponentLibrary'),
         },
       },
       build: {
         lib: {
-          entry: resolve(__dirname, 'src/myPackagePlugin', 'index.ts'),
+          entry: resolve(__dirname, 'src/myComponentLibrary', 'index.ts'),
           name: 'vue3-component-library-template',
           fileName: 'vue3-component-library-template',
         },
