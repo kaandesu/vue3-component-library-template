@@ -3,13 +3,13 @@
 layout: home
 
 hero:
-  name: 'Vue Vite NPM Template'
+  name: 'Vue3 Component Library Template'
   text: 'Vitepress documentation example'
   tagline: My great package tagline
   actions:
     - theme: brand
       text: Live Demo
-      link: https://kaandesu.github.io/vue3-vite-npm-template/live-demo/index.html
+      link: https://kaandesu.github.io/vue3-component-library-template/live-demo/index.html
     - theme: alt
       text: Markdown Examples
       link: /markdown-examples
@@ -17,8 +17,8 @@ hero:
       text: API Examples
       link: /api-examples
   image:
-    src: https://raw.githubusercontent.com/kaandesu/vue3-vite-npm-template/main/public/logo.webp
-    alt: vue3-vite-npm-template
+    src: https://raw.githubusercontent.com/kaandesu/vue3-component-library-template/main/public/logo.webp
+    alt: vue3-component-library-template
 
 features:
   - title: Feature A

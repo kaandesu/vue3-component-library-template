@@ -37,8 +37,8 @@ export default defineConfig(({ mode }) => {
       build: {
         lib: {
           entry: resolve(__dirname, 'src/myPackagePlugin', 'index.ts'),
-          name: 'vue3-vite-npm-template',
-          fileName: 'vue3-vite-npm-template',
+          name: 'vue3-component-library-template',
+          fileName: 'vue3-component-library-template',
         },
       },
       rollupOptions: {
