@@ -10,10 +10,10 @@
 
 ![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D) ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white) <!-- Title -->
 
-  <h3 align="center">Complete Vue3 NPM Package Template</h3>
+  <h3 align="center">Complete Vue3 Component Library Template</h3>
    <!-- DESCRIPTION -->
   <p align="center">
-    An all-in-one solution for crafting Vue3-based NPM packages with Vite, complete with built-in GitHub Pages live-demo deployment, automated test-and-build workflows, and Vite-powered unit test configuration, including coverage analysis and a README.md template for your package.
+    An all-in-one solution for crafting Vue3-based Component Library with Vite, complete with built-in GitHub Pages live-demo deployment, automated test-and-build workflows, and Vite-powered unit test configuration, including coverage analysis and a README.md template for your library.
     <br />        
     <br />
     <!-- CHANGER IT WITH YOUR GITHUB PAGES LINK -->
