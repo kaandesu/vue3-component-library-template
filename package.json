@@ -1,0 +1,72 @@
+{
+  "name": "vue3-vite-npm-template",
+  "author": "Your name <yourmail@mail.com> (https://github.com/[USERNAME])",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Your package description",
+  "contributors": [
+    {
+      "name": "Your name",
+      "email": "yourmail@mail.com"
+    }
+  ],
+  "keywords": [
+    "some",
+    "keywords",
+    "here"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/[USERNAME]/vue3-vite-npm-template.git"
+  },
+  "homepage": "https://[USERNAME].github.io/vue3-vite-npm-template/",
+  "bugs": {
+    "url": "https://github.com/[USERNAME]/vue3-vite-npm-template/issues"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/vue3-vite-npm-template.umd.cjs",
+  "module": "./dist/vue3-vite-npm-template.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue3-vite-npm-template.js",
+      "require": "./dist/vue3-vite-npm-template.umd.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run test && vite build --mode production && npm run generate:types && npm run build:pages",
+    "build:lib": "npm run test && vite build --mode production && npm run generate:types",
+    "clean": "rm -rf ./dist && rm -rf ./live-demo && rm -rf ./coverage",
+    "coverage:web": "http-server ./coverage",
+    "generate:types": "vue-tsc -p tsconfig-build.json --declaration --emitDeclarationOnly true --outdir ./dist",
+    "changeset": "changeset",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run  --coverage",
+    "build:pages": "npm run docs:build && npm run build:live-demo",
+    "build:live-demo": "vite build --mode live-demo --outDir ./docs/.vitepress/dist/live-demo",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "dependencies": {
+    "@vitejs/plugin-vue": "^4.5.0",
+    "vue": "^3.3.8"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.26.2",
+    "@types/node": "^20.9.4",
+    "@vitest/coverage-v8": "^0.34.6",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.0",
+    "vitepress": "^1.0.0-rc.24",
+    "vitest": "^0.34.6",
+    "vue-tsc": "^1.8.22"
+  }
+}
