@@ -6,7 +6,12 @@
   align-items: center;
   justify-content: space-between;
 }
-
+@media (prefers-color-scheme: dark) {
+  .storybook-header {
+    background: darkgray;
+    color: white !important;
+  }
+}
 .storybook-header svg {
   display: inline-block;
   vertical-align: top;

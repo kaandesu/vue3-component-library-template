@@ -10,6 +10,9 @@ hero:
     - theme: brand
       text: Live Demo
       link: https://kaandesu.github.io/vue3-component-library-template/live-demo/index.html
+    - theme: brand
+      text: Storybook
+      link: https://kaandesu.github.io/vue3-component-library-template/storybook/index.html
     - theme: alt
       text: Markdown Examples
       link: /markdown-examples

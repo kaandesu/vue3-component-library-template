@@ -13,6 +13,7 @@ live-demo
 dist-ssr
 *.local
 
+storybook-static
 
 coverage
 docs/.vitepress/dist

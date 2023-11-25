@@ -1,8 +1,10 @@
 <template>
-  <div>
-    yooooo
-    <my-button label="Primary Button" primary size="large" />
-    <my-button label="Primary Button" backgroundColor="#ff00ff" size="medium" />
+  <div style="display:flex; gap:1rem; flex-flow: column nowrap;width:100%">
+    <my-button primary label="Hello World" size="large" />
+    <my-button primary label="Hello World" size="medium" />
+    <my-button primary label="Hello World" size="small" />
+    <br>
+    <my-page :user="{ name: 'User' }" />
 
   </div>
 </template>

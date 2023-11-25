@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => {
         vue({
           template: {
             compilerOptions: {
-              isCustomElement: (tag) => tag.startsWith('my-'),
+              isCustomElement: (tag) => tag.startsWith('My'),
             },
           },
         }),
@@ -35,7 +35,7 @@ export default defineConfig(({ mode }) => {
         vue({
           template: {
             compilerOptions: {
-              isCustomElement: (tag) => tag.startsWith('my-'),
+              isCustomElement: (tag) => tag.startsWith('My'),
             },
           },
         }),

@@ -40,22 +40,22 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run test && vite build --mode production && npm run generate:types && npm run build:pages",
-    "build:lib": "npm run test && vite build --mode production && npm run generate:types",
-    "clean": "rm -rf ./dist && rm -rf ./live-demo && rm -rf ./coverage",
+    "build": "pnpm test && vite build --mode production && pnpm generate:types && pnpm build:pages",
+    "build:lib": "pnpm test && vite build --mode production && pnpm generate:types",
+    "clean": "rm -rf ./dist && rm -rf ./live-demo && rm -rf ./coverage && rm -rf ./storybook-static",
     "coverage:web": "http-server ./coverage",
     "generate:types": "vue-tsc -p tsconfig-build.json --declaration --emitDeclarationOnly true --outdir ./dist",
     "changeset": "changeset",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run  --coverage",
-    "build:pages": "npm run docs:build && npm run build:live-demo",
+    "build:pages": "pnpm docs:build && pnpm build:live-demo && pnpm build-storybook",
     "build:live-demo": "vite build --mode live-demo --outDir ./docs/.vitepress/dist/live-demo",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build --output-dir ./docs/.vitepress/dist/storybook"
   },
   "dependencies": {
     "@vitejs/plugin-vue": "^4.5.0",
