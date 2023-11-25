@@ -6,7 +6,15 @@ export default defineConfig(({ mode }) => {
   if (mode === 'live-demo') {
     return {
       base: './',
-      plugins: [vue()],
+      plugins: [
+        vue({
+          template: {
+            compilerOptions: {
+              isCustomElement: (tag) => tag.startsWith('my-'),
+            },
+          },
+        }),
+      ],
       test: {
         globals: true,
       },
@@ -23,7 +31,15 @@ export default defineConfig(({ mode }) => {
     }
   } else {
     return {
-      plugins: [vue()],
+      plugins: [
+        vue({
+          template: {
+            compilerOptions: {
+              isCustomElement: (tag) => tag.startsWith('my-'),
+            },
+          },
+        }),
+      ],
       test: {
         globals: true,
         setupFiles: 'src/setupTests.ts',
