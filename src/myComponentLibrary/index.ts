@@ -1,70 +1,97 @@
-import type { App, Plugin } from 'vue'
-import * as components from './components'
+import type { App } from 'vue'
 import * as plugins from './plugins'
+import * as components from './components'
 import * as directives from './directives'
-import type { PluginOptions, ComponentName, DirectiveName, PluginName } from './types'
+import type { PluginOptions, DirectiveName, PluginName, ComponentName } from './types'
 import './style.css'
+import { defu } from 'defu'
 
-export const useComponentLibrary = (pluginOptions: PluginOptions): Plugin => {
+const useComponentLibrary = (pluginOptions: PluginOptions): any => {
+  /* ADD YOUR DEFAULT CONFIGURATION BELOW */
+  const DefaultPluginOptions: PluginOptions = {
+    showLogs: true,
+    components: {
+      globallyRegister: false,
+      exclude: [],
+    },
+    plugins: {
+      globallyRegister: true,
+      exclude: [],
+    },
+    directives: {
+      globallyRegister: true,
+      exclude: [],
+    },
+  }
+
+  const PluginOptions: PluginOptions = defu(pluginOptions, DefaultPluginOptions)
+
   return (app: App) => {
-    /* Add Components */
-    for (const [name, component] of Object.entries(components) as [ComponentName, any][]) {
-      const componentName = `${pluginOptions.prefix}${name}`
-      /* Exclude Components */
-      if (
-        pluginOptions.components &&
-        pluginOptions.components.exclude &&
-        pluginOptions.components.exclude.includes(name)
-      ) {
-        log(name, componentName, false)
-        continue
+    if (PluginOptions.components?.globallyRegister) {
+      for (const name in components) {
+        /* Exclude Components */
+        if (
+          PluginOptions.components &&
+          PluginOptions.components.exclude &&
+          PluginOptions.components.exclude.includes(name as ComponentName)
+        ) {
+          log(name, name, false, PluginOptions.showLogs)
+          continue
+        }
+        log(name, name, true, PluginOptions.showLogs)
+        app.component(name, components[name as ComponentName])
       }
-      log(name, componentName, true)
-      app.component(componentName, component)
+    } else {
+      log('ALL COMPONENTS', false, false)
     }
 
     /* Add Plugins */
-    for (const [name, plugin] of Object.entries(plugins) as [PluginName, any][]) {
-      /* Exclude Plugins */
-      if (
-        pluginOptions.plugins &&
-        pluginOptions.plugins.exclude &&
-        pluginOptions.plugins.exclude.includes(name)
-      ) {
-        log(name, false, false)
-        continue
+    if (PluginOptions.plugins?.globallyRegister) {
+      for (const name in plugins) {
+        /* Exclude Plugins */
+        if (
+          PluginOptions.plugins &&
+          PluginOptions.plugins.exclude &&
+          PluginOptions.plugins.exclude.includes(name as PluginName)
+        ) {
+          log(name, false, false, PluginOptions.showLogs)
+          continue
+        }
+        log(name, false, true, PluginOptions.showLogs)
+        app.use(plugins[name as PluginName])
       }
-      log(name, false, true)
-      app.use(plugin)
+    } else {
+      log('ALL PLUGINS', false, false)
     }
 
     /* Add Directives */
-    for (const [name, directive] of Object.entries(directives) as [DirectiveName, any][]) {
-      const directiveName = name
-      /* Exclude Directives */
-      if (
-        pluginOptions.directives &&
-        pluginOptions.directives.exclude &&
-        pluginOptions.directives.exclude.includes(name)
-      ) {
-        log(name, false, false)
-        continue
+    if (PluginOptions.directives?.globallyRegister) {
+      for (const name in directives) {
+        /* Exclude Directives */
+        if (
+          PluginOptions.directives &&
+          PluginOptions.directives.exclude &&
+          PluginOptions.directives.exclude.includes(name as DirectiveName)
+        ) {
+          log(name, false, false, PluginOptions.showLogs)
+          continue
+        }
+        log(name, false, true, PluginOptions.showLogs)
+        app.directive(name, directives[name as DirectiveName])
       }
-      log(name, false, true)
-      app.directive(directiveName, directive)
+    } else {
+      log('ALL DIRECTIVES', false, false)
     }
   }
 }
 
-const log = (base: string, as: string | boolean, succ: boolean) => {
-  as =
-    as !== false
-      ? (as as string).replace(/[A-Z]/g, (letter: string) => `-${letter.toLowerCase()}`).slice(1)
-      : false
-  let m = as ? `imported %c as %c <${as}>` : `imported %c %c`
-  if (!succ) m = `excluded %c %c`
+const log = (base: string, as: string | boolean, succ: boolean, showLogs: boolean = true) => {
+  if (!showLogs) return
+  as = as !== false ? as : false
+  let m = as ? `globally added %c as %c <${as}>` : `imported %c %c`
+  if (!succ) m = `excluded in global registration %c %c`
   console.log(
-    `%c${base}%c is %c ${m}`,
+    `%c${base}%c - %c ${m}`,
     `color: ${succ ? 'green' : 'red'}; font-weight: bold;font-size: 1.2em`,
     'color:gray',
     'color:orange',
@@ -72,3 +99,8 @@ const log = (base: string, as: string | boolean, succ: boolean) => {
     'color:teal; font-weight: bold;font-size: 1.2em'
   )
 }
+
+export * from './components'
+export * from './directives'
+export * from './plugins'
+export { useComponentLibrary, components, directives, plugins }

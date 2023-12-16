@@ -7,10 +7,10 @@ const app = createApp(App)
 // app.use(useComponentLibrary({ prefix: 'My' }))
 app.use(
   useComponentLibrary({
-    prefix: 'My',
-    components: { exclude: ['Header'] },
+    showLogs: true, // default: true
+    components: { globallyRegister: false, exclude: [] },
     plugins: { exclude: [] },
-    directives: { exclude: ['customDirective'] },
+    directives: { exclude: [] },
   })
 )
 app.mount('#app')

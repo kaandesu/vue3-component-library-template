@@ -6,15 +6,7 @@ export default defineConfig(({ mode }) => {
   if (mode === 'live-demo') {
     return {
       base: './',
-      plugins: [
-        vue({
-          template: {
-            compilerOptions: {
-              isCustomElement: (tag) => tag.startsWith('My'),
-            },
-          },
-        }),
-      ],
+      plugins: [vue()],
       test: {
         globals: true,
       },
@@ -31,15 +23,7 @@ export default defineConfig(({ mode }) => {
     }
   } else {
     return {
-      plugins: [
-        vue({
-          template: {
-            compilerOptions: {
-              isCustomElement: (tag) => tag.startsWith('My'),
-            },
-          },
-        }),
-      ],
+      plugins: [vue()],
       test: {
         globals: true,
         setupFiles: 'src/setupTests.ts',
@@ -52,16 +36,16 @@ export default defineConfig(({ mode }) => {
       },
       build: {
         lib: {
-          entry: resolve(__dirname, 'src/myComponentLibrary', 'index.ts'),
-          name: 'vue3-component-library-template',
+          entry: resolve(__dirname, 'src/myComponentLibrary/index.ts'),
+          name: 'Vue3ComponentLibraryTemplate',
           fileName: 'vue3-component-library-template',
         },
-      },
-      rollupOptions: {
-        external: ['vue'],
-        output: {
-          globals: {
-            vue: 'Vue',
+        rollupOptions: {
+          external: ['vue'],
+          output: {
+            globals: {
+              vue: 'Vue',
+            },
           },
         },
       },

@@ -1,14 +1,16 @@
 <template>
   <div style="display:flex; gap:1rem; flex-flow: column nowrap;width:100%">
-    <my-button primary label="Hello World" size="large" />
-    <my-button primary label="Hello World" size="medium" />
-    <my-button primary label="Hello World" size="small" />
-    <br>
-    <my-page :user="{ name: 'User' }" />
-
+    <Button primary label="Hello World" size="large" />
+    <Button primary label="Hello World" size="medium" />
+    <Button primary label="Hello World" size="small" />
+    <hr>
+    <Button backgroundColor="red" label="Hello World" size="small" />
+    <Button backgroundColor="orange" label="Hello World" size="medium" />
+    <Button backgroundColor="green" label="Hello World" size="large" />
   </div>
 </template>
 <script setup lang="ts">
+import Button from '../src/myComponentLibrary/components/Button.vue'
 
 </script>
 <style scoped>
